@@ -11,12 +11,10 @@
     <section id="container">
         <h1>Today's To Do<span id="sync"><i class="bi bi-arrow-repeat"></i></span></h1>
         <form action="#">
-            <textarea name="to-dos" id="add" placeholder="Add to your list..."></textarea>
+            <textarea name="to-dos" id="add" placeholder="Add to your list..." rows="1"></textarea>
             <span><i class="bi bi-arrow-return-left"></i></span>
         </form>
-        <ul id="task-list">
-            <!-- <li><input contenteditable = "false" type="checkbox"><span class="input" contenteditable="true">'${list[i].text}'</span><i class="bi bi-three-dots-vertical"></i></li> -->
-        </ul>
+        <ul id="task-list"></ul>
         <button id= "clear" type="reset">Clear all completed</button>
     </section>
 </body>

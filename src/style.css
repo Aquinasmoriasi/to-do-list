@@ -33,6 +33,7 @@ ul {
 
 #sync {
     padding-right: 9px;
+    cursor: pointer;
 }
 
 h1 {
@@ -54,11 +55,12 @@ form {
     box-sizing: border-box;
     padding: 0 9px;
     margin: 0;
-    border-bottom: 2px solid rgba(211, 211 ,211, 0.3);
     height: 50px;
+    border-bottom: 2px solid rgba(211, 211 ,211, 0.3);
     display: grid;
     grid-template-columns: 17fr 1fr;
     align-items: center;
+    justify-content: center;
 }
 
 textarea {
@@ -66,10 +68,20 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: nowrap;
     border: 0;
     margin: 0;
-    padding: 0 9px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-left: 9px;
     resize: none;
+    font-size: 16px;
+    height: 20px;
+}
+
+textarea::placeholder {
+    font-style: italic;
+    vertical-align: middle;
 }
 
 #clear {
@@ -80,6 +92,14 @@ textarea {
     border: none;
     background-color: rgba(211, 211, 211, 0.3);
     height: 50px;
+    font-size: 16px;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+#clear:hover {
+    background-color: rgba(211, 211, 211, 0.6);
 }
 
 li {
@@ -89,7 +109,6 @@ li {
     grid-template-columns: 3fr 50fr 2.5fr;
     align-items: center;
     padding: 0 9px;
-    margin-bottom: 0.5px;
     margin-top: 1px;
 }
 
@@ -99,27 +118,23 @@ li {
     padding: 0;
 }
 
-textarea::placeholder {
-   font-style: italic;
-   vertical-align: middle;  
-}
-
 .input {
     min-height: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
+    overflow: auto;
 }
 
 .bi-arrow-return-left {
     padding-right: 9px;
     font-size: x-large;
     cursor: pointer;
-    caret-color: red;
 }
 
 .bi-three-dots-vertical {
+    padding-right: 9px;
     font-size: x-large;
     cursor: move;
-    caret-color: red;
 }
