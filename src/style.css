@@ -1,140 +1,140 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
 
 body {
-    background-color: rgba(211, 211, 211, 0.3);
-    font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(211, 211, 211, 0.3);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 #container {
-    width: 50vw;
-    background-color: #fff;
-    height: auto;
-    margin: auto;
-    margin-top: 50px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    box-shadow: 2px 2px 2px 2px rgba(211, 211, 211, 1);
+  width: 50vw;
+  background-color: #fff;
+  height: auto;
+  margin: auto;
+  margin-top: 50px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 2px 2px 2px 2px rgba(211, 211, 211, 1);
 }
 
 #refresh {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #title {
-    padding-left: 9px;
+  padding-left: 9px;
 }
 
 #sync {
-    padding-right: 9px;
-    cursor: pointer;
+  padding-right: 9px;
+  cursor: pointer;
 }
 
 h1 {
-    display: flex;
-    margin: 0;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid rgba(211, 211 ,211, 0.3);
-    height: 50px;
-    padding: 0 9px;
-    box-sizing: border-box;
-    font-weight: 100;
-    color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  margin: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(211, 211, 211, 0.3);
+  height: 50px;
+  padding: 0 9px;
+  box-sizing: border-box;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 form {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 9px;
-    margin: 0;
-    height: 50px;
-    border-bottom: 2px solid rgba(211, 211 ,211, 0.3);
-    display: grid;
-    grid-template-columns: 17fr 1fr;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 9px;
+  margin: 0;
+  height: 50px;
+  border-bottom: 2px solid rgba(211, 211, 211, 0.3);
+  display: grid;
+  grid-template-columns: 17fr 1fr;
+  align-items: center;
+  justify-content: center;
 }
 
 textarea {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    border: 0;
-    margin: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    padding-left: 9px;
-    resize: none;
-    font-size: 16px;
-    height: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  border: 0;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-left: 9px;
+  resize: none;
+  font-size: 16px;
+  height: 20px;
 }
 
 textarea::placeholder {
-    font-style: italic;
-    vertical-align: middle;
+  font-style: italic;
+  vertical-align: middle;
 }
 
 #clear {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    border: none;
-    background-color: rgba(211, 211, 211, 0.3);
-    height: 50px;
-    font-size: 16px;
-    font-weight: 100;
-    color: rgba(0, 0, 0, 0.7);
-    cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: rgba(211, 211, 211, 0.3);
+  height: 50px;
+  font-size: 16px;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
 }
 
 #clear:hover {
-    background-color: rgba(211, 211, 211, 0.6);
+  background-color: rgba(211, 211, 211, 0.5);
 }
 
 li {
-    min-height: 50px;
-    border-bottom: 2px solid rgba(211, 211 ,211, 0.3);
-    display: grid;
-    grid-template-columns: 3fr 50fr 2.5fr;
-    align-items: center;
-    padding: 0 9px;
-    margin-top: 1px;
+  min-height: 50px;
+  border-bottom: 2px solid rgba(211, 211, 211, 0.3);
+  display: grid;
+  grid-template-columns: 3fr 50fr 2.5fr;
+  align-items: center;
+  padding: 0 9px;
+  margin-top: 1px;
 }
 
 #task-list {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .input {
-    min-height: 50px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    overflow: auto;
+  min-height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
 }
 
 .bi-arrow-return-left {
-    padding-right: 9px;
-    font-size: x-large;
-    cursor: pointer;
+  padding-right: 9px;
+  font-size: x-large;
+  cursor: pointer;
 }
 
 .bi-three-dots-vertical {
-    padding-right: 9px;
-    font-size: x-large;
-    cursor: move;
+  padding-right: 9px;
+  font-size: x-large;
+  cursor: move;
 }
