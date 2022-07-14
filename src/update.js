@@ -51,18 +51,18 @@ class Task {
       span.innerHTML += tasks[j].description;
       li.append(input, span, i);
       taskList.appendChild(li);
+
+      tasks[j].index = j;
     }
   }
 }
 
 document.querySelector('form').addEventListener('submit', (e) => {
-  const taskItem = document.querySelector('textarea').value;
-  if (taskItem !== null) {
-    const task = new Task(taskItem);
-    Task.showTasks();
-    Task.addTask(task);
-  }
   e.preventDefault();
+  const taskItem = document.querySelector('textarea').value.trim();
+  const task = new Task(taskItem);
+  Task.addTask(task);
+  Task.showTasks();
 });
 
 const text = document.querySelectorAll('li span');
