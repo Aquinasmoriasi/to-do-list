@@ -1,7 +1,7 @@
 class Task {
-  constructor(description, completed = false, index = 0) {
+  constructor(description, index) {
     this.description = description;
-    this.completed = completed;
+    this.completed = false;
     this.index = index;
   }
 
@@ -29,40 +29,45 @@ class Task {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  static showTasks() {
-    const tasks = this.task();
+  static showTasks(task) {
     const taskList = document.getElementById('task-list');
-    for (let j = 0; j < tasks.length; j += 1) {
-      const li = document.createElement('li');
-      li.setAttribute('draggable', 'true');
 
-      const input = document.createElement('input');
-      input.setAttribute('contenteditable', 'false');
-      input.setAttribute('type', 'checkbox');
+    const li = document.createElement('li');
+    li.setAttribute('draggable', 'true');
 
-      const span = document.createElement('span');
-      span.setAttribute('class', 'input');
-      span.id = tasks[j].index;
-      span.setAttribute('contenteditable', 'true');
+    const input = document.createElement('input');
+    input.setAttribute('contenteditable', 'false');
+    input.setAttribute('type', 'checkbox');
 
-      const i = document.createElement('i');
-      i.setAttribute('class', 'bi bi-three-dots-vertical');
+    const span = document.createElement('span');
+    span.setAttribute('class', 'input');
+    span.setAttribute('contenteditable', 'true');
 
-      span.innerHTML += tasks[j].description;
-      li.append(input, span, i);
-      taskList.appendChild(li);
+    const i = document.createElement('i');
+    i.setAttribute('class', 'bi bi-three-dots-vertical');
 
-      tasks[j].index = j;
-    }
+    span.textContent = `${task.description}`;
+    li.append(input, span, i);
+    taskList.appendChild(li);
   }
 }
 
+const showAllTasks = () => {
+  const tasks = Task.task();
+  tasks.forEach(task => {
+    Task.showTasks(task);
+  });
+};
+
+document.addEventListener('DOMContentLoaded', showAllTasks());
+
 document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
+  const tasks = Task.task();
   const taskItem = document.querySelector('textarea').value.trim();
-  const task = new Task(taskItem);
+  const task = new Task(taskItem, tasks.length + 1);
   Task.addTask(task);
-  Task.showTasks();
+  Task.showTasks(task);
 });
 
 const text = document.querySelectorAll('li span');
