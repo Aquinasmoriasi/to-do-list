@@ -112,6 +112,10 @@ li {
   margin-top: 1px;
 }
 
+li input:checked + span {
+  text-decoration: line-through;
+}
+
 #task-list {
   width: 100%;
   margin: 0;
