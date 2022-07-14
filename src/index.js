@@ -68,3 +68,15 @@ text.forEach((t) => {
     t.focus();
   });
 });
+
+const strike = () => {
+  const text = document.querySelectorAll('li span');
+  text.forEach((t) => {
+    t.style.textDecoration = 'line-through';
+  });
+};
+
+const check = document.querySelectorAll('li input');
+if (check.checked === true) {
+  strike();
+}
