@@ -96,6 +96,7 @@ menu.forEach((item) => {
     trash.forEach((tr) => {
       tr.addEventListener('click', () => {
         item.parentElement.style.display = 'none';
+        Task.remove(item.parentElement);
       });
     });
   });
