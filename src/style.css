@@ -23,6 +23,10 @@ ul {
   box-shadow: 2px 2px 2px 2px rgba(211, 211, 211, 1);
 }
 
+textarea {
+  outline: none;
+}
+
 #refresh {
   cursor: pointer;
 }
@@ -70,7 +74,7 @@ textarea {
   align-items: center;
   flex-wrap: nowrap;
   border: 0;
-  margin: 0;
+  margin: 0 1px 0 0;
   overflow-x: hidden;
   overflow-y: hidden;
   padding-left: 15px;
@@ -159,4 +163,9 @@ li input {
 
 .bi-trash {
   cursor: pointer;
+}
+
+#return {
+  border: none;
+  background-color: #fff;
 }

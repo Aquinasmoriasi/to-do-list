@@ -1,4 +1,4 @@
-class Task {
+export default class Task {
   constructor(description, index) {
     this.description = description;
     this.completed = false;
@@ -24,9 +24,17 @@ class Task {
   }
 
   static remove(index) {
-    const tasks = this.task();
+    let tasks = this.task();
     tasks.splice(index, 1);
+    tasks = tasks.filter((todo) => todo.index !== index);
     localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  static update(arr) {
+    for (let i = 1; i <= arr.length; i += 1) {
+      arr[i].index = i;
+    }
+    return arr;
   }
 
   static showTasks(task) {
@@ -40,6 +48,7 @@ class Task {
 
     const span = document.createElement('span');
     span.setAttribute('class', 'input');
+    span.setAttribute('contenteditable', 'false');
 
     const i = document.createElement('i');
     i.setAttribute('class', 'bi bi-three-dots-vertical');
@@ -49,55 +58,3 @@ class Task {
     taskList.appendChild(li);
   }
 }
-
-const showAllTasks = () => {
-  const tasks = Task.task();
-  tasks.forEach((task) => {
-    Task.showTasks(task);
-  });
-};
-
-document.addEventListener('DOMContentLoaded', showAllTasks());
-
-document.querySelector('form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const tasks = Task.task();
-  const taskItem = document.querySelector('textarea').value.trim();
-  const task = new Task(taskItem, tasks.length + 1);
-  Task.addTask(task);
-  Task.showTasks(task);
-});
-
-const text = document.querySelectorAll('li span');
-
-const menu = document.querySelectorAll('.bi-three-dots-vertical');
-
-text.forEach((t) => {
-  t.addEventListener('focus', () => {
-    const selection = window.getSelection();
-    const range = document.createRange();
-    selection.removeAllRanges();
-    range.selectNodeContents(t);
-    range.collapse(false);
-    selection.addRange(range);
-    t.focus();
-  });
-  t.addEventListener('dblclick', () => {
-    t.setAttribute('contenteditable', 'true');
-  });
-});
-
-menu.forEach((item) => {
-  item.addEventListener('click', () => {
-    item.classList.remove('bi-three-dots-vertical');
-    item.classList.add('bi-trash');
-    
-    const trash = document.querySelectorAll('.bi-trash');
-    trash.forEach((tr) => {
-      tr.addEventListener('click', () => {
-        item.parentElement.style.display = 'none';
-        Task.remove(item.parentElement);
-      });
-    });
-  });
-});
