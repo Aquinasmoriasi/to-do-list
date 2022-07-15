@@ -40,21 +40,22 @@ export default class Task {
   static showTasks(task) {
     const taskList = document.getElementById('task-list');
 
-    const li = document.createElement('li');
-    li.setAttribute('draggable', 'true');
+    const div = document.createElement('div');
+    div.setAttribute('draggable', 'true');
+    div.setAttribute('class', 'listed-task');
+
+    const check = document.createElement('input');
+    check.setAttribute('type', 'checkbox');
+    check.setAttribute('class', 'check');
 
     const input = document.createElement('input');
-    input.setAttribute('type', 'checkbox');
-
-    const span = document.createElement('span');
-    span.setAttribute('class', 'input');
-    span.setAttribute('contenteditable', 'false');
+    input.setAttribute('class', 'input');
 
     const i = document.createElement('i');
     i.setAttribute('class', 'bi bi-three-dots-vertical');
 
-    span.textContent = `${task.description}`;
-    li.append(input, span, i);
-    taskList.appendChild(li);
+    input.value = `${task.description}`;
+    div.append(check, input, i);
+    taskList.appendChild(div);
   }
 }

@@ -9,7 +9,7 @@ const showAllTasks = () => {
 };
 document.addEventListener('DOMContentLoaded', showAllTasks());
 
-document.querySelector('form').addEventListener('submit', (e) => {
+document.querySelector('.text-input').addEventListener('submit', (e) => {
   e.preventDefault();
   const tasks = Task.task();
   const taskItem = document.querySelector('textarea').value.trim();
@@ -33,22 +33,23 @@ text.forEach((t) => {
     t.focus();
   });
   t.addEventListener('dblclick', () => {
-    t.setAttribute('contenteditable', 'true');
+    t.setAttribute('readonly', 'readonly');
   });
   t.addEventListener('keyup', (e) => {
-    const { index } = t.dataset;
+    const index = e.target.value;
     if (e.key === 'Enter') {
       e.preventDefault();
-      t.setAttribute('contenteditable', 'false');
+      t.removeAttribute('readonly');
+      t.textContent = index;
     }
-    t.description = index;
   });
 });
 
 menu.forEach((item) => {
   item.addEventListener('click', () => {
-    item.classList.remove('bi-three-dots-vertical');
-    item.classList.add('bi-trash');
+    if (!item.classList.contains('bi-trash')) {
+      item.classList.toggle('bi-trash');
+    }
     const trash = document.querySelectorAll('.bi-trash');
     trash.forEach((tr) => {
       tr.addEventListener('click', () => {

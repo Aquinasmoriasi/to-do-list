@@ -5,10 +5,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-ul {
-  list-style-type: none;
-}
-
 #container {
   width: 50vw;
   background-color: #fff;
@@ -23,7 +19,8 @@ ul {
   box-shadow: 2px 2px 2px 2px rgba(211, 211, 211, 1);
 }
 
-textarea {
+textarea,
+input {
   outline: none;
 }
 
@@ -57,30 +54,33 @@ h1 {
 form {
   width: 100%;
   box-sizing: border-box;
-  padding: 0 9px;
+  padding: 0;
   margin: 0;
-  height: 50px;
-  border-bottom: 2px solid rgba(211, 211, 211, 0.3);
-  display: grid;
-  grid-template-columns: 17fr 1fr;
   align-items: center;
   justify-content: center;
+}
+
+.text-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(211, 211, 211, 0.3);
+  height: 48px;
 }
 
 textarea {
   box-sizing: border-box;
   display: flex;
+  width: 100%;
+  height: 20px;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
   border: 0;
   margin: 0 1px 0 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
   padding-left: 15px;
   resize: none;
   font-size: 16px;
-  height: 20px;
 }
 
 textarea::placeholder {
@@ -89,38 +89,39 @@ textarea::placeholder {
 }
 
 #clear {
-  width: 100%;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   border: none;
   background-color: rgba(211, 211, 211, 0.3);
-  height: 50px;
   font-size: 16px;
   font-weight: 100;
   color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
+  height: 50px;
+  width: 100%;
 }
 
 #clear:hover {
   background-color: rgba(211, 211, 211, 0.5);
 }
 
-li {
+.listed-task{
   min-height: 50px;
   border-bottom: 2px solid rgba(211, 211, 211, 0.3);
   display: grid;
-  grid-template-columns: 4fr 50fr 2.5fr;
+  box-sizing: border-box;
+  grid-template-columns: 5fr 90fr 1fr;
   align-items: center;
   padding: 0 9px;
   margin-top: 1px;
 }
 
-li input:checked + span {
+.check:checked + .input {
   text-decoration: line-through;
 }
 
-li span{
+.input {
   cursor: pointer;
 }
 
@@ -131,18 +132,12 @@ li span{
 }
 
 .input {
-  min-height: 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   overflow: auto;
-}
-
-.bi-arrow-return-left {
-  padding-right: 9px;
-  font-size: x-large;
-  cursor: pointer;
+  border: none;
 }
 
 .bi-three-dots-vertical {
@@ -156,10 +151,6 @@ li span{
   color: rgb(149, 149, 149);
 }
 
-li input {
-  transform: scale(1.4);
-  margin-right: 5px;
-}
 
 .bi-trash {
   cursor: pointer;
@@ -168,4 +159,7 @@ li input {
 #return {
   border: none;
   background-color: #fff;
+  padding-right: 18px;
+  font-size: x-large;
+  cursor: pointer;
 }
