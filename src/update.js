@@ -36,12 +36,10 @@ class Task {
     li.setAttribute('draggable', 'true');
 
     const input = document.createElement('input');
-    input.setAttribute('contenteditable', 'false');
     input.setAttribute('type', 'checkbox');
 
     const span = document.createElement('span');
     span.setAttribute('class', 'input');
-    span.setAttribute('contenteditable', 'true');
 
     const i = document.createElement('i');
     i.setAttribute('class', 'bi bi-three-dots-vertical');
@@ -54,7 +52,7 @@ class Task {
 
 const showAllTasks = () => {
   const tasks = Task.task();
-  tasks.forEach(task => {
+  tasks.forEach((task) => {
     Task.showTasks(task);
   });
 };
@@ -71,6 +69,9 @@ document.querySelector('form').addEventListener('submit', (e) => {
 });
 
 const text = document.querySelectorAll('li span');
+
+const menu = document.querySelectorAll('.bi-three-dots-vertical');
+
 text.forEach((t) => {
   t.addEventListener('focus', () => {
     const selection = window.getSelection();
@@ -80,5 +81,22 @@ text.forEach((t) => {
     range.collapse(false);
     selection.addRange(range);
     t.focus();
+  });
+  t.addEventListener('dblclick', () => {
+    t.setAttribute('contenteditable', 'true');
+  });
+});
+
+menu.forEach((item) => {
+  item.addEventListener('click', () => {
+    item.classList.remove('bi-three-dots-vertical');
+    item.classList.add('bi-trash');
+    
+    const trash = document.querySelectorAll('.bi-trash');
+    trash.forEach((tr) => {
+      tr.addEventListener('click', () => {
+        item.parentElement.style.display = 'none';
+      });
+    });
   });
 });

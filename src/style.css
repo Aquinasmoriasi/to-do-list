@@ -116,6 +116,10 @@ li input:checked + span {
   text-decoration: line-through;
 }
 
+li span{
+  cursor: pointer;
+}
+
 #task-list {
   width: 100%;
   margin: 0;
@@ -141,7 +145,7 @@ li input:checked + span {
   padding-right: 9px;
   color: rgba(211, 211, 211, 0.5);
   font-size: x-large;
-  cursor: move;
+  cursor: pointer;
 }
 
 .bi-three-dots-vertical:hover {
@@ -151,4 +155,8 @@ li input:checked + span {
 li input {
   transform: scale(1.4);
   margin-right: 5px;
+}
+
+.bi-trash {
+  cursor: pointer;
 }
