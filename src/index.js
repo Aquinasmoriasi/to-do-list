@@ -1,12 +1,12 @@
 import './style.css';
-import Task from './update.js';
+import Task from './modules/update.js';
 
-const showAllTasks = () => {
+function showAllTasks() {
   const tasks = Task.task();
   tasks.forEach((task) => {
     Task.showTasks(task);
   });
-};
+}
 document.addEventListener('DOMContentLoaded', showAllTasks());
 
 document.querySelector('.text-input').addEventListener('submit', (e) => {
@@ -57,6 +57,7 @@ menu.forEach((item) => {
     trash.forEach((tr) => {
       tr.addEventListener('click', (e) => {
         let tasks = Task.task();
+        e.target.parentNode.style.display = 'none';
         const { id } = e.target.parentNode;
         const modifTasksBef = tasks.slice(0, id);
         modifTasksBef.pop();
@@ -66,7 +67,6 @@ menu.forEach((item) => {
         });
         tasks = [...modifTasksBef, ...modifTasksAft];
         localStorage.setItem('tasks', JSON.stringify(tasks));
-        window.location.reload();
       });
     });
   });
