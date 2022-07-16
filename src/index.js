@@ -1,5 +1,6 @@
 import './style.css';
 import Task from './modules/update.js';
+import { clear } from './modules/filter.js';
 
 function showAllTasks() {
   const tasks = Task.task();
@@ -83,3 +84,25 @@ editInput.forEach((input) => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   });
 });
+
+const checked = document.querySelectorAll('.check');
+
+checked.forEach((check) => {
+  check.addEventListener('change', (e) => {
+    const tasks = Task.task();
+    const { checked } = e.target;
+    const { id } = e.target.parentNode;
+
+    if (checked) {
+      tasks[(id - 1)].completed = true;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      e.target.nextSibling.style.textDecoration = 'line-through';
+    } else {
+      tasks[(id - 1)].completed = false;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      e.target.nextSibling.style.textDecoration = 'none';
+    }
+  });
+});
+
+document.getElementById('clear').addEventListener('click', clear);
