@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>To-Do List</title>
 </head>
 <body>
     <section id="container">
         <h1>Today's To Do<span id="sync"><i class="bi bi-arrow-repeat"></i></span></h1>
-        <form action="#">
-            <textarea name="to-dos" id="add" placeholder="Add to your list..." rows="1"></textarea>
-            <span><i class="bi bi-arrow-return-left"></i></span>
+        <form action="#" class="text-input">
+            <textarea name="to-dos" id="add" placeholder="Add to your list..." rows="1" required></textarea>
+            <button id="return" type="submit"><i class="bi bi-arrow-return-left"></i></button>
         </form>
-        <ul id="task-list"></ul>
-        <button id= "clear" type="reset">Clear all completed</button>
+        <form action="#">
+            <div id="task-list"></div>
+            <button id="clear" type="button">Clear all completed</button>
+        </form>
     </section>
 </body>
 </html>

@@ -1,57 +1,85 @@
 import './style.css';
+import Task from './update.js';
 
-const list = [
-  {
-    description: 'Go to the shop',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Play chess',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Pick up groceries',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Visit Laura',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Watch a movie',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Kill a mocking bird',
-    completed: false,
-    index: 0,
-  },
-];
+const showAllTasks = () => {
+  const tasks = Task.task();
+  tasks.forEach((task) => {
+    Task.showTasks(task);
+  });
+};
+document.addEventListener('DOMContentLoaded', showAllTasks());
 
-const taskList = document.getElementById('task-list');
+document.querySelector('.text-input').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const tasks = Task.task();
+  const taskItem = document.querySelector('textarea').value.trim();
+  const task = new Task(taskItem, Object.keys(tasks).length + 1);
+  Task.addTask(task);
+  Task.showTasks(task);
+  window.location.reload();
+});
 
-for (let j = 0; j < list.length; j += 1) {
-  const li = document.createElement('li');
-  li.setAttribute('draggable', true);
+const text = document.querySelectorAll('li span');
 
-  const input = document.createElement('input');
-  input.setAttribute('contenteditable', false);
-  input.setAttribute('type', 'checkbox');
+const menu = document.querySelectorAll('.bi-three-dots-vertical');
 
-  const span = document.createElement('span');
-  span.setAttribute('class', 'input');
-  span.setAttribute('contenteditable', true);
+text.forEach((t) => {
+  t.addEventListener('dblclick', () => {
+    t.setAttribute('readonly', 'readonly');
+  });
+  t.addEventListener('keyup', (e) => {
+    const index = e.target.value;
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      t.removeAttribute('readonly');
+      t.textContent = index;
+    }
+  });
+});
 
-  const i = document.createElement('i');
-  i.setAttribute('class', 'bi bi-three-dots-vertical');
+menu.forEach((item) => {
+  item.addEventListener('mouseover', () => {
+    if (!item.classList.contains('bi-trash')) {
+      item.classList.add('bi-trash');
+    } else {
+      item.classList.remove('bi-trash');
+    }
+  });
+  item.addEventListener('mouseout', () => {
+    if (!item.classList.contains('bi-trash')) {
+      item.classList.add('bi-trash');
+    } else {
+      item.classList.remove('bi-trash');
+    }
+  });
+  item.addEventListener('click', () => {
+    const trash = document.querySelectorAll('.bi-trash');
+    trash.forEach((tr) => {
+      tr.addEventListener('click', (e) => {
+        let tasks = Task.task();
+        const { id } = e.target.parentNode;
+        const modifTasksBef = tasks.slice(0, id);
+        modifTasksBef.pop();
+        const modifTasksAft = tasks.slice(id);
+        modifTasksAft.forEach((t) => {
+          t.index -= 1;
+        });
+        tasks = [...modifTasksBef, ...modifTasksAft];
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        window.location.reload();
+      });
+    });
+  });
+});
 
-  span.textContent += list[j].description;
-  li.append(input, span, i);
-  taskList.appendChild(li);
-  list[j].index += j;
-}
+const editInput = document.querySelectorAll('.input');
+
+editInput.forEach((input) => {
+  input.addEventListener('change', (e) => {
+    const input = e.target.parentNode.childNodes[1].value.trim();
+    const { id } = e.target.parentNode;
+    const tasks = Task.task();
+    tasks[(id - 1)].description = input;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  });
+});
