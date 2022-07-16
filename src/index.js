@@ -46,10 +46,21 @@ text.forEach((t) => {
 });
 
 menu.forEach((item) => {
-  item.addEventListener('click', () => {
+  item.addEventListener('mouseover', () => {
     if (!item.classList.contains('bi-trash')) {
-      item.classList.toggle('bi-trash');
+      item.classList.add('bi-trash');
+    } else {
+      item.classList.remove('bi-trash');
     }
+  });
+  item.addEventListener('mouseout', () => {
+    if (!item.classList.contains('bi-trash')) {
+      item.classList.add('bi-trash');
+    } else {
+      item.classList.remove('bi-trash');
+    }
+  });
+  item.addEventListener('click', () => {
     const trash = document.querySelectorAll('.bi-trash');
     trash.forEach((tr) => {
       tr.addEventListener('click', (e) => {
