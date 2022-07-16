@@ -16,6 +16,7 @@ document.querySelector('.text-input').addEventListener('submit', (e) => {
   const task = new Task(taskItem, Object.keys(tasks).length + 1);
   Task.addTask(task);
   Task.showTasks(task);
+  window.location.reload();
 });
 
 const text = document.querySelectorAll('li span');
