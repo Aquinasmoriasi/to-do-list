@@ -23,15 +23,6 @@ const text = document.querySelectorAll('li span');
 const menu = document.querySelectorAll('.bi-three-dots-vertical');
 
 text.forEach((t) => {
-  t.addEventListener('focus', () => {
-    const selection = window.getSelection();
-    const range = document.createRange();
-    selection.removeAllRanges();
-    range.selectNodeContents(t);
-    range.collapse(false);
-    selection.addRange(range);
-    t.focus();
-  });
   t.addEventListener('dblclick', () => {
     t.setAttribute('readonly', 'readonly');
   });

@@ -23,13 +23,6 @@ export default class Task {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  static remove(index) {
-    const tasks = this.task();
-    tasks.splice(index, 1);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    window.location.reload();
-  }
-
   static showTasks(task) {
     const taskList = document.getElementById('task-list');
 
