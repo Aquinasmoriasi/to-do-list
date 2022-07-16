@@ -53,9 +53,16 @@ menu.forEach((item) => {
     const trash = document.querySelectorAll('.bi-trash');
     trash.forEach((tr) => {
       tr.addEventListener('click', (e) => {
-        let { id } = e.target.parentNode;
-        id -= 1;
-        Task.remove(id);
+        let tasks = Task.task();
+        const { id } = e.target.parentNode;
+        const modifTasksBef = tasks.slice(0, id);
+        modifTasksBef.pop();
+        const modifTasksAft = tasks.slice(id);
+        modifTasksAft.forEach((t) => {
+          t.index -= 1;
+        });
+        tasks = [...modifTasksBef, ...modifTasksAft];
+        localStorage.setItem('tasks', JSON.stringify(tasks));
         window.location.reload();
       });
     });

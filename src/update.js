@@ -18,7 +18,7 @@ export default class Task {
   static addTask(task) {
     const taskItem = document.querySelector('textarea');
     const tasks = this.task();
-    tasks.unshift(task);
+    tasks.push(task);
     taskItem.value = '';
     localStorage.setItem('tasks', JSON.stringify(tasks));
     window.location.reload();
@@ -27,9 +27,6 @@ export default class Task {
   static remove(index) {
     const tasks = this.task();
     tasks.splice(index, 1);
-    for (let i = 0; i < tasks.length; i += 1) {
-      tasks[i].index = i + 1;
-    }
     localStorage.setItem('tasks', JSON.stringify(tasks));
     window.location.reload();
   }
