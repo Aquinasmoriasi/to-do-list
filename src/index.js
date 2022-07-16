@@ -1,12 +1,13 @@
 import './style.css';
-import Task from './update.js';
+import Task from './modules/update.js';
+import { clear } from './modules/filter.js';
 
-const showAllTasks = () => {
+function showAllTasks() {
   const tasks = Task.task();
   tasks.forEach((task) => {
     Task.showTasks(task);
   });
-};
+}
 document.addEventListener('DOMContentLoaded', showAllTasks());
 
 document.querySelector('.text-input').addEventListener('submit', (e) => {
@@ -57,6 +58,7 @@ menu.forEach((item) => {
     trash.forEach((tr) => {
       tr.addEventListener('click', (e) => {
         let tasks = Task.task();
+        e.target.parentNode.style.display = 'none';
         const { id } = e.target.parentNode;
         const modifTasksBef = tasks.slice(0, id);
         modifTasksBef.pop();
@@ -66,7 +68,6 @@ menu.forEach((item) => {
         });
         tasks = [...modifTasksBef, ...modifTasksAft];
         localStorage.setItem('tasks', JSON.stringify(tasks));
-        window.location.reload();
       });
     });
   });
@@ -83,3 +84,25 @@ editInput.forEach((input) => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   });
 });
+
+const checked = document.querySelectorAll('.check');
+
+checked.forEach((check) => {
+  check.addEventListener('change', (e) => {
+    const tasks = Task.task();
+    const { checked } = e.target;
+    const { id } = e.target.parentNode;
+
+    if (checked) {
+      tasks[(id - 1)].completed = true;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      e.target.nextSibling.style.textDecoration = 'line-through';
+    } else {
+      tasks[(id - 1)].completed = false;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      e.target.nextSibling.style.textDecoration = 'none';
+    }
+  });
+});
+
+document.getElementById('clear').addEventListener('click', clear);
