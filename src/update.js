@@ -21,6 +21,7 @@ export default class Task {
     tasks.push(task);
     taskItem.value = '';
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    window.location.reload();
   }
 
   static showTasks(task) {
