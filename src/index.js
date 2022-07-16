@@ -68,3 +68,15 @@ menu.forEach((item) => {
     });
   });
 });
+
+const editInput = document.querySelectorAll('.input');
+
+editInput.forEach((input) => {
+  input.addEventListener('change', (e) => {
+    const input = e.target.parentNode.childNodes[1].value.trim();
+    const { id } = e.target.parentNode;
+    const tasks = Task.task();
+    tasks[(id - 1)].description = input;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  });
+});

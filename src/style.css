@@ -51,6 +51,16 @@ h1 {
   color: rgba(0, 0, 0, 0.7);
 }
 
+.input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  border: none;
+  cursor: pointer;
+}
+
 form {
   width: 100%;
   box-sizing: border-box;
@@ -106,7 +116,7 @@ textarea::placeholder {
   background-color: rgba(211, 211, 211, 0.5);
 }
 
-.listed-task{
+.listed-task {
   min-height: 50px;
   border-bottom: 2px solid rgba(211, 211, 211, 0.3);
   display: grid;
@@ -126,23 +136,10 @@ textarea::placeholder {
   text-decoration: line-through;
 }
 
-.input {
-  cursor: pointer;
-}
-
 #task-list {
   width: 100%;
   margin: 0;
   padding: 0;
-}
-
-.input {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  overflow: auto;
-  border: none;
 }
 
 .bi-three-dots-vertical {
@@ -155,7 +152,6 @@ textarea::placeholder {
 .bi-three-dots-vertical:hover {
   color: rgb(149, 149, 149);
 }
-
 
 .bi-trash {
   cursor: pointer;
