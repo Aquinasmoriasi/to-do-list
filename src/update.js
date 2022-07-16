@@ -18,23 +18,20 @@ export default class Task {
   static addTask(task) {
     const taskItem = document.querySelector('textarea');
     const tasks = this.task();
-    tasks.push(task);
+    tasks.unshift(task);
     taskItem.value = '';
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    window.location.reload();
   }
 
   static remove(index) {
-    let tasks = this.task();
+    const tasks = this.task();
     tasks.splice(index, 1);
-    tasks = tasks.filter((todo) => todo.index !== index);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
-
-  static update(arr) {
-    for (let i = 1; i <= arr.length; i += 1) {
-      arr[i].index = i;
+    for (let i = 0; i < tasks.length; i += 1) {
+      tasks[i].index = i + 1;
     }
-    return arr;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    window.location.reload();
   }
 
   static showTasks(task) {
@@ -43,6 +40,7 @@ export default class Task {
     const div = document.createElement('div');
     div.setAttribute('draggable', 'true');
     div.setAttribute('class', 'listed-task');
+    div.setAttribute('id', `${task.index}`);
 
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');

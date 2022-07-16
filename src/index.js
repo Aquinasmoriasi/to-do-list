@@ -52,9 +52,11 @@ menu.forEach((item) => {
     }
     const trash = document.querySelectorAll('.bi-trash');
     trash.forEach((tr) => {
-      tr.addEventListener('click', () => {
-        item.parentElement.style.display = 'none';
-        Task.remove(item.parentElement);
+      tr.addEventListener('click', (e) => {
+        let { id } = e.target.parentNode;
+        id -= 1;
+        Task.remove(id);
+        window.location.reload();
       });
     });
   });
