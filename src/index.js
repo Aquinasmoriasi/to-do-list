@@ -20,6 +20,18 @@ document.querySelector('.text-input').addEventListener('submit', (e) => {
   window.location.reload();
 });
 
+document.querySelector('.text-input').addEventListener('keyup', (e) => {
+  e.preventDefault();
+  const tasks = Task.task();
+  if (e.key === 'Enter') {
+    const taskItem = document.querySelector('textarea').value.trim();
+    const task = new Task(taskItem, Object.keys(tasks).length + 1);
+    Task.addTask(task);
+    Task.showTasks(task);
+    window.location.reload();
+  }
+});
+
 const text = document.querySelectorAll('li span');
 
 const menu = document.querySelectorAll('.bi-three-dots-vertical');
@@ -106,14 +118,14 @@ checked.forEach((check) => {
       tasks[(id - 1)].completed = true;
       const completed = tasks.filter((t) => t.completed === true);
       sup.textContent = completed.length;
-      localStorage.setItem('tasks', JSON.stringify(tasks));
       e.target.nextSibling.style.textDecoration = 'line-through';
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     } else {
       tasks[(id - 1)].completed = false;
       const completed = tasks.filter((t) => t.completed === true);
       sup.textContent = completed.length;
-      localStorage.setItem('tasks', JSON.stringify(tasks));
       e.target.nextSibling.style.textDecoration = 'none';
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   });
 });
