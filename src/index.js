@@ -114,16 +114,26 @@ checked.forEach((check) => {
     const { id } = e.target.parentNode;
     const sup = document.querySelector('sup');
 
-    if (checked) {
+    if (checked && tasks.length > 1) {
       tasks[(id - 1)].completed = true;
       const completed = tasks.filter((t) => t.completed === true);
       sup.textContent = completed.length;
       e.target.nextSibling.style.textDecoration = 'line-through';
       localStorage.setItem('tasks', JSON.stringify(tasks));
-    } else {
+    } else if (!checked && tasks.length > 1) {
       tasks[(id - 1)].completed = false;
       const completed = tasks.filter((t) => t.completed === true);
       sup.textContent = completed.length;
+      e.target.nextSibling.style.textDecoration = 'none';
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    } else if (checked) {
+      tasks[0].completed = true;
+      sup.textContent = 1;
+      e.target.nextSibling.style.textDecoration = 'line-through';
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    } else {
+      tasks[0].completed = false;
+      sup.textContent = '';
       e.target.nextSibling.style.textDecoration = 'none';
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
