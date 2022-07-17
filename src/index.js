@@ -66,7 +66,15 @@ menu.forEach((item) => {
         modifTasksAft.forEach((t) => {
           t.index -= 1;
         });
-        tasks = [...modifTasksBef, ...modifTasksAft];
+
+        if (tasks.length === 2 && id === 1) {
+          tasks = modifTasksAft;
+        } else if (tasks.length === 2 && id === 2) {
+          tasks = modifTasksBef;
+        } else {
+          tasks = [...modifTasksBef, ...modifTasksAft];
+        }
+
         localStorage.setItem('tasks', JSON.stringify(tasks));
       });
     });
