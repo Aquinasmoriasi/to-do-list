@@ -92,13 +92,18 @@ checked.forEach((check) => {
     const tasks = Task.task();
     const { checked } = e.target;
     const { id } = e.target.parentNode;
+    const sup = document.querySelector('sup');
 
     if (checked) {
       tasks[(id - 1)].completed = true;
+      const completed = tasks.filter((t) => t.completed === true);
+      sup.textContent = completed.length;
       localStorage.setItem('tasks', JSON.stringify(tasks));
       e.target.nextSibling.style.textDecoration = 'line-through';
     } else {
       tasks[(id - 1)].completed = false;
+      const completed = tasks.filter((t) => t.completed === true);
+      sup.textContent = completed.length;
       localStorage.setItem('tasks', JSON.stringify(tasks));
       e.target.nextSibling.style.textDecoration = 'none';
     }
