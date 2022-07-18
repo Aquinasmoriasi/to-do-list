@@ -4,7 +4,13 @@ import { clear } from './modules/filter.js';
 
 function showAllTasks() {
   const tasks = Task.task();
+  const sup = document.querySelector('sup');
+  let counter = 0;
   tasks.forEach((task) => {
+    if (task.completed === true) {
+      counter += 1;
+      sup.textContent = counter;
+    }
     Task.showTasks(task);
   });
 }
