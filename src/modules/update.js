@@ -31,6 +31,7 @@ export default class Task {
     div.setAttribute('draggable', 'true');
     div.setAttribute('class', 'listed-task');
     div.setAttribute('id', `${task.index}`);
+    div.setAttribute('completed', `${task.completed}`);
 
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');
@@ -43,6 +44,13 @@ export default class Task {
     i.setAttribute('class', 'bi bi-three-dots-vertical');
 
     input.value = `${task.description}`;
+    if (task.completed === true) {
+      input.style.textDecoration = 'line-through';
+      check.checked = true;
+    } else {
+      input.style.textDecoration = 'none';
+      check.checked = false;
+    }
     div.append(check, input, i);
     taskList.appendChild(div);
   }
