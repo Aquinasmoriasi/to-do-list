@@ -38,23 +38,7 @@ document.querySelector('.text-input').addEventListener('keyup', (e) => {
   }
 });
 
-const text = document.querySelectorAll('li span');
-
 const menu = document.querySelectorAll('.bi-three-dots-vertical');
-
-text.forEach((t) => {
-  t.addEventListener('dblclick', () => {
-    t.setAttribute('readonly', 'readonly');
-  });
-  t.addEventListener('keyup', (e) => {
-    const index = e.target.value;
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      t.removeAttribute('readonly');
-      t.textContent = index;
-    }
-  });
-});
 
 menu.forEach((item) => {
   item.addEventListener('mouseover', () => {
@@ -73,6 +57,7 @@ menu.forEach((item) => {
   });
   item.addEventListener('click', () => {
     const trash = document.querySelectorAll('.bi-trash');
+
     trash.forEach((tr) => {
       tr.addEventListener('click', (e) => {
         let tasks = Task.task();
@@ -94,6 +79,9 @@ menu.forEach((item) => {
         }
 
         localStorage.setItem('tasks', JSON.stringify(tasks));
+        const sup = document.querySelector('sup');
+        const completed = tasks.filter((t) => t.completed === true);
+        sup.textContent = completed.length;
       });
     });
   });
