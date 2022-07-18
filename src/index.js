@@ -1,4 +1,5 @@
 import './style.css';
+import './mobile.css';
 import Task from './modules/update.js';
 import { clear } from './modules/filter.js';
 
@@ -81,7 +82,11 @@ menu.forEach((item) => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
         const sup = document.querySelector('sup');
         const completed = tasks.filter((t) => t.completed === true);
-        sup.textContent = completed.length;
+        if (completed.length === 0) {
+          sup.textContent = '';
+        } else {
+          sup.textContent = completed.length;
+        }
       });
     });
   });
