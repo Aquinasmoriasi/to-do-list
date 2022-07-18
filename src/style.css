@@ -147,7 +147,14 @@ textarea::placeholder {
 }
 
 .bi-three-dots-vertical:hover {
-  color: rgb(213, 69, 69);
+  color: rgb(255, 0, 0);
+}
+
+sup {
+  color: red;
+  font-size: 16px;
+  font-family: monospace;
+  font-style: normal;
 }
 
 .bi-trash {
