@@ -49,7 +49,7 @@ To get a local copy up and running follow these simple steps.
 - to modify a task, click on the task you want to modify and change the task. To save it, you just need to remove focus away from the input area.
 - the task item can be deleted by hovering over the vertical three lines at the end of the input field whereby a trash icon will appear. Click on the icon to remove the task.
 ### Run tests
-- You can navigate to different parts of the page from the navigation bar and you can also inspect using the available browser tools to se how the webpages were built.
+- You can navigate to different parts of the page from the navigation bar and you can also inspect using the available browser tools to see how the webpages were built.
 ### Deployment
 - The project is deployed at [https://aquinasmoriasi.github.io/to-do-list](https://aquinasmoriasi.github.io/to-do-list);
 
